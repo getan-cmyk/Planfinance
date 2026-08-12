@@ -2,7 +2,7 @@
 
 A mobile-first personal-finance system for Telegram, built as one Cloudflare Worker backed by D1. Money is stored as integer satang; no financial calculation relies on JavaScript decimal values.
 
-The tracker starts with a fresh D1 dataset for each Telegram user; it does not import or copy any Supabase data. The UI keeps the original tracker's workflow (quick income/expense entry, filters, custom categories, monthly/yearly reports and charts) while using the Worker/D1 API. White mode is the default; a comfortable dark mode can be toggled from Settings and is stored only in the browser.
+The tracker starts with a fresh D1 dataset for each Telegram user; it does not import or copy any Supabase data. New users start with zero account balance and the dashboard uses the current month's income minus expenses as the monthly starting amount. The UI keeps the original tracker's workflow (quick income/expense entry, multiple user-managed accounts, filters, custom categories, monthly/yearly reports and charts) while using the Worker/D1 API. White mode is the default with a soft blue-gray/pastel card layout; a comfortable dark mode can be toggled from Settings and is stored only in the browser.
 
 ## Architecture
 
@@ -44,7 +44,7 @@ All responses use `{ success, data }` or `{ success:false, error:{code,message} 
 |---|---|
 | `POST /api/auth/telegram` | Verify Telegram initData; issue session |
 | `GET /api/me` | Current user |
-| `GET/POST /api/accounts` | Account management |
+| `GET/POST/PATCH /api/accounts` | Account management, including add, rename, and archive |
 | `GET/POST/DELETE /api/transactions` | Paginated transaction ledger and mutations |
 | `GET/POST /api/budgets` | Monthly budget/actuals |
 | `GET/POST /api/sinking-funds` | Reserved future obligations |
