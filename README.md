@@ -2,6 +2,8 @@
 
 A mobile-first personal-finance system for Telegram, built as one Cloudflare Worker backed by D1. Money is stored as integer satang; no financial calculation relies on JavaScript decimal values.
 
+The tracker starts with a fresh D1 dataset for each Telegram user; it does not import or copy any Supabase data. The UI keeps the original tracker's workflow (quick income/expense entry, filters, custom categories, monthly/yearly reports and charts) while using the Worker/D1 API. White mode is the default; a comfortable dark mode can be toggled from Settings and is stored only in the browser.
+
 ## Architecture
 
 ```mermaid
@@ -50,6 +52,8 @@ All responses use `{ success, data }` or `{ success:false, error:{code,message} 
 | `GET /api/goals` | Goals |
 | `GET /api/net-worth` | Net-worth engine |
 | `GET /api/portfolio` | Positions and allocation |
+| `GET /api/reports/monthly?month=YYYY-MM` | Monthly summary, category breakdown, six-month trend |
+| `GET /api/reports/yearly?year=YYYY` | Annual summary and monthly trend |
 | `GET /api/forecast?months=3` | Explicitly labelled cash forecast |
 
 `POST /api/transactions` supports income, expense, transfer, investment buy/sell, dividend, interest, refund and adjustment. Transfers debit one account and credit the other, and are never consumption expense. Deletes reverse account effects. Investment buys reduce cash but are not consumption expenses.
