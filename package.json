@@ -1,0 +1,33 @@
+{
+  "name": "finance-telegram-mini-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:worker": "wrangler dev",
+    "build": "tsc -b && vite build",
+    "check": "tsc --noEmit -p tsconfig.worker.json && tsc --noEmit -p tsconfig.app.json",
+    "test": "vitest run",
+    "db:migrate:local": "wrangler d1 migrations apply finance-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply finance-db --remote",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.4.3",
+    "hono": "^4.6.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241230.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vitest": "^4.1.10",
+    "wrangler": "^4.121.0"
+  }
+}

@@ -1,0 +1,17 @@
+name = "finance-telegram-mini-app"
+main = "src/worker.ts"
+compatibility_date = "2024-12-30"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "finance-db"
+database_id = "034ed859-d408-41bc-958b-d5bf37a4ace2"
+migrations_dir = "migrations"
+
+[vars]
+APP_ORIGIN = "http://localhost:5173"
+TELEGRAM_AUTH_MAX_AGE_SECONDS = "86400"
+
+[triggers]
+crons = ["0 * * * *", "5 0 * * *"]
