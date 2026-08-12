@@ -160,3 +160,52 @@ body[data-theme="dark"] .account-form { border-color: #3b4c59; }
   .donut { width: 112px; height: 112px; }
   .donut > div { width: 70px; height: 70px; }
 }
+
+/* Image-inspired content surfaces. The bottom navigation and FAB above stay unchanged. */
+body { background: #dce7ea; }
+.app-shell { max-width: 680px; padding-top: 24px; }
+.topbar { padding: 2px 6px 0; }
+.topbar h1 { font-size: 27px; }
+.hero-card { min-height: 174px; border-radius: 32px; background: radial-gradient(circle at 82% 5%, rgba(153,220,232,.58), transparent 34%), linear-gradient(135deg, #f4fbfb 0%, #e7f3f4 100%); box-shadow: 0 18px 38px rgba(44,70,78,.14); }
+.hero-card span { color: #5c7280; text-transform: uppercase; letter-spacing: .04em; }
+.metric-grid { gap: 12px; }
+.metric-card { min-height: 105px; border: 1px solid rgba(255,255,255,.9); border-radius: 25px; background: rgba(248,252,252,.96); box-shadow: 0 10px 24px rgba(46,70,80,.1); }
+.metric-card::before { width: 31px; height: 31px; }
+.panel, .list-card, .form-card { border-radius: 27px; background: rgba(248,252,252,.96); box-shadow: 0 10px 24px rgba(46,70,80,.09); }
+.panel-heading h2, .section-title h2 { font-size: 19px; }
+.activity-panel, .activity-list { border-color: #263640; background: linear-gradient(150deg, #152027 0%, #0b151b 100%); color: #f4fafb; box-shadow: 0 14px 30px rgba(10,24,30,.24); }
+.activity-panel .panel-heading h2, .activity-list .transaction-main b { color: #f4fafb; }
+.activity-panel .eyebrow { color: #8ca6b0; }
+.activity-count { color: #8ca6b0; font-size: 11px; font-weight: 800; }
+.activity-row { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 11px; padding: 13px 0; border-bottom: 1px solid rgba(178,213,220,.14); }
+.activity-row:last-of-type { border-bottom: 0; }
+.activity-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; font-weight: 900; }
+.activity-main { min-width: 0; }
+.activity-main b, .activity-main span, .activity-main small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.activity-main b { font-size: 13px; }
+.activity-main span, .activity-main small { margin-top: 2px; color: #8fa4ad; font-size: 11px; }
+.activity-main small { color: #6e838d; }
+.activity-income, .activity-expense { font-size: 13px; white-space: nowrap; }
+.activity-income { color: #9bd28c; }
+.activity-expense { color: #f18e79; }
+.activity-empty { margin: 12px 0 3px; color: #8fa4ad; font-size: 13px; }
+.activity-list .transaction-row { border-bottom-color: rgba(178,213,220,.14); }
+.activity-list .transaction-main b { color: #f4fafb; }
+.activity-list .transaction-main span { color: #8fa4ad; }
+.activity-list .row-actions button { color: #9cb4bd; }
+.activity-list .row-actions button:last-child { color: #f18e79; }
+.category-panel { overflow: hidden; }
+.category-panel .category-chips { gap: 8px; }
+.category-panel .category-chip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 9px 7px 11px; }
+.category-remove { display: grid; width: 18px; height: 18px; padding: 0; place-items: center; border: 0; border-radius: 50%; background: rgba(255,255,255,.62); color: currentColor; font-size: 15px; line-height: 1; }
+.category-remove:hover { background: rgba(255,255,255,.95); }
+
+body[data-theme="dark"] { background: #0a1117; }
+body[data-theme="dark"] .hero-card { background: radial-gradient(circle at 82% 5%, rgba(56,121,143,.42), transparent 34%), linear-gradient(135deg, #172a34 0%, #14222b 100%); box-shadow: 0 16px 32px rgba(0,0,0,.3); }
+body[data-theme="dark"] .hero-card span, body[data-theme="dark"] .hero-card small { color: #9db5bd; }
+body[data-theme="dark"] .hero-card strong { color: #f4fafb; }
+body[data-theme="dark"] .metric-card, body[data-theme="dark"] .panel, body[data-theme="dark"] .list-card, body[data-theme="dark"] .form-card { border-color: #263b46; background: #14232c; box-shadow: 0 12px 26px rgba(0,0,0,.24); }
+body[data-theme="dark"] .metric-card span, body[data-theme="dark"] .panel-heading h2, body[data-theme="dark"] .section-title h2 { color: #e7f0f2; }
+body[data-theme="dark"] .activity-panel, body[data-theme="dark"] .activity-list { border-color: #344d58; background: linear-gradient(150deg, #101b22 0%, #070e13 100%); }
+body[data-theme="dark"] .category-remove { background: rgba(255,255,255,.12); }
+body[data-theme="dark"] .category-remove:hover { background: rgba(255,255,255,.25); }
