@@ -209,3 +209,64 @@ body[data-theme="dark"] .metric-card span, body[data-theme="dark"] .panel-headin
 body[data-theme="dark"] .activity-panel, body[data-theme="dark"] .activity-list { border-color: #344d58; background: linear-gradient(150deg, #101b22 0%, #070e13 100%); }
 body[data-theme="dark"] .category-remove { background: rgba(255,255,255,.12); }
 body[data-theme="dark"] .category-remove:hover { background: rgba(255,255,255,.25); }
+
+/* Production polish: calmer surfaces, clear hierarchy and Thai-first typography. */
+:root { font-family: "Noto Sans Thai", "IBM Plex Sans Thai", "Sarabun", system-ui, sans-serif; }
+body { background: #f2f5f7; color: #172331; }
+.app-shell { max-width: 720px; padding: 20px 18px 104px; }
+.topbar { margin-bottom: 20px; }
+.topbar h1 { font-size: 24px; font-weight: 800; letter-spacing: -.035em; }
+.eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .09em; }
+.hero-card { min-height: 158px; padding: 22px; border: 1px solid #e1e8ed; border-radius: 20px; background: #fff; box-shadow: 0 8px 22px rgba(26,45,61,.07); }
+.hero-card span { color: #607486; font-size: 14px; font-weight: 600; text-transform: none; letter-spacing: 0; }
+.hero-card strong { margin: 5px 0; color: #152535; font-size: 30px; font-weight: 800; }
+.hero-card small { color: #7c8b98; font-size: 12px; }
+.hero-button { background: #233340 !important; border-radius: 12px; }
+.button { border-radius: 11px; font-weight: 700; }
+.button.primary { background: #233340; box-shadow: 0 5px 12px rgba(35,51,64,.14); }
+.metric-grid { gap: 11px; }
+.metric-card { min-height: 96px; padding: 14px; border: 1px solid #e1e8ed; border-radius: 17px; background: #fff; box-shadow: 0 6px 18px rgba(26,45,61,.06); }
+.metric-card::before { width: 26px; height: 26px; margin-bottom: 8px; }
+.metric-card span { color: #667789; font-size: 12px; font-weight: 500; }
+.metric-card strong { color: #1d2c3b; font-size: 17px; font-weight: 800; }
+.panel, .list-card, .form-card { padding: 16px; border: 1px solid #e1e8ed; border-radius: 18px; background: #fff; box-shadow: 0 6px 18px rgba(26,45,61,.055); }
+.panel-heading h2, .section-title h2 { color: #1c2a38; font-size: 17px; font-weight: 800; }
+.pill, .badge { font-weight: 600; }
+.insight { background: #f5f8fa; border: 1px solid #e7edf1; }
+.insight p { color: #526477; }
+.filters { gap: 9px; }
+.input { border-color: #d8e1e7; border-radius: 10px; background: #fff; color: #243342; }
+.transaction-row { padding: 13px 0; border-bottom-color: #edf1f4; }
+.transaction-main b { color: #233340; font-size: 13px; font-weight: 700; }
+.transaction-main span { color: #7f8d99; }
+.amount-income { color: #16805d; font-weight: 700; }
+.amount-expense { color: #d45e4e; font-weight: 700; }
+.account-form { border-top-color: #e1e8ed; }
+.activity-panel, .activity-list { border-color: #e1e8ed; background: #fff; color: inherit; box-shadow: 0 6px 18px rgba(26,45,61,.055); }
+.activity-panel .panel-heading h2, .activity-list .transaction-main b { color: #1c2a38; }
+.activity-panel .eyebrow { color: #7e8d99; }
+.activity-list .transaction-row { border-bottom-color: #edf1f4; }
+.activity-list .transaction-main span { color: #7f8d99; }
+.activity-list .row-actions button { color: #728291; }
+.activity-list .row-actions button:last-child { color: #d45e4e; }
+
+body[data-theme="dark"] { background: #101820; color: #e8eff2; }
+body[data-theme="dark"] .hero-card { border-color: #2c414d; background: #1b2a33; box-shadow: 0 10px 24px rgba(0,0,0,.22); }
+body[data-theme="dark"] .hero-card strong { color: #f2f7f8; }
+body[data-theme="dark"] .metric-card, body[data-theme="dark"] .panel, body[data-theme="dark"] .list-card, body[data-theme="dark"] .form-card { border-color: #2b3f4a; background: #1b2a33; box-shadow: 0 8px 22px rgba(0,0,0,.2); }
+body[data-theme="dark"] .metric-card strong, body[data-theme="dark"] .panel-heading h2, body[data-theme="dark"] .section-title h2, body[data-theme="dark"] .transaction-main b { color: #eef5f6; }
+body[data-theme="dark"] .metric-card span, body[data-theme="dark"] .transaction-main span { color: #9db1bb; }
+body[data-theme="dark"] .input { border-color: #3a505c; background: #16242c; color: #e8eff2; }
+body[data-theme="dark"] .insight { border-color: #2d424d; background: #17262e; }
+body[data-theme="dark"] .insight p { color: #b5c5cc; }
+body[data-theme="dark"] .activity-panel, body[data-theme="dark"] .activity-list { border-color: #2b3f4a; background: #1b2a33; }
+body[data-theme="dark"] .activity-panel .panel-heading h2, body[data-theme="dark"] .activity-list .transaction-main b { color: #eef5f6; }
+body[data-theme="dark"] .activity-list .transaction-row { border-bottom-color: #2b3f4a; }
+
+@media (max-width: 480px) {
+  .app-shell { padding: 16px 12px 100px; }
+  .hero-card { min-height: 145px; padding: 18px; border-radius: 18px; }
+  .hero-card strong { font-size: 26px; }
+  .hero-button { padding: 10px 11px; font-size: 12px; }
+  .panel, .list-card, .form-card { border-radius: 16px; }
+}
