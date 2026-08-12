@@ -1,5 +1,5 @@
 export type ApiResult<T> = { success: boolean; data: T; error?: { code: string; message: string } };
-const base = import.meta.env.VITE_API_BASE_URL ?? '';
+const base = import.meta.env.VITE_API_BASE_URL ?? 'https://finance-telegram-mini-app.getananan.workers.dev';
 const tokenKey = 'finance.session';
 export const getToken = () => localStorage.getItem(tokenKey);
 export const setToken = (token: string) => localStorage.setItem(tokenKey, token);

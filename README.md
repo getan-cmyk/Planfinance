@@ -83,6 +83,8 @@ The local UI intentionally will not bypass Telegram authentication: open it thro
 6. Apply schema: `npm run db:migrate:remote`.
 7. Build frontend (`npm run build`) and deploy it to Cloudflare Pages or Workers static assets; update `APP_ORIGIN` and Telegram Mini App URL to its HTTPS URL.
 8. Deploy Worker: `npm run deploy`.
+
+For Cloudflare Pages Git integration, connect the GitHub repository `getan-cmyk/Planfinance`, use `main` as the production branch, `npm run build` as the build command, and `dist` as the output directory. `VITE_API_BASE_URL` may be set to `https://finance-telegram-mini-app.getananan.workers.dev`; the app also has this production URL as a safe non-secret default.
 9. In Telegram, open the Mini App, create a transaction, and confirm a second Telegram account cannot read it.
 
 ## Production checklist
