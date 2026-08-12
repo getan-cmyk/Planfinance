@@ -1,6 +1,5 @@
 name = "finance-telegram-mini-app"
 main = "src/worker.ts"
-pages_build_output_dir = "dist"
 compatibility_date = "2026-08-12"
 workers_dev = true
 
