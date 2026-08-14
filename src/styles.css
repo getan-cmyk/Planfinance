@@ -270,3 +270,25 @@ body[data-theme="dark"] .activity-list .transaction-row { border-bottom-color: #
   .hero-button { padding: 10px 11px; font-size: 12px; }
   .panel, .list-card, .form-card { border-radius: 16px; }
 }
+
+/* Financial meaning stays consistent across every screen. */
+.hero-card.positive { border-left: 4px solid #2f9b73; }
+.hero-card.negative { border-left: 4px solid #d95f51; }
+.hero-card.positive strong { color: #18835f; }
+.hero-card.negative strong { color: #c84f45; }
+.metric-card.income { border-top: 3px solid #39a477; }
+.metric-card.expense { border-top: 3px solid #dc6859; }
+.metric-card.info { border-top: 3px solid #8061d6; }
+.metric-card.income strong { color: #16805d; }
+.metric-card.expense strong { color: #d45e4e; }
+.metric-card.info strong { color: #7154c4; }
+body[data-theme="dark"] .hero-card.positive strong { color: #8ad4b0; }
+body[data-theme="dark"] .hero-card.negative strong { color: #ff9a8d; }
+body[data-theme="dark"] .metric-card.income strong { color: #8ad4b0; }
+body[data-theme="dark"] .metric-card.expense strong { color: #ff9a8d; }
+body[data-theme="dark"] .metric-card.info strong { color: #bca8ff; }
+
+@media (min-width: 680px) {
+  .dashboard-page { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .dashboard-page > .hero-card, .dashboard-page > .metric-grid { grid-column: 1 / -1; }
+}
