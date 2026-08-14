@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { api, getToken, setToken } from './api';
+import { ApiError, api, clearToken, getToken, setToken } from './api';
 import './styles.css';
 
 type Theme = 'light' | 'dark';
@@ -54,7 +54,12 @@ function App() {
         api<Category[]>('/api/categories'),
       ]);
       setDashboard(d); setReport(r); setBudgets(b); setTransactions(t.items); setAccounts(a); setCategories(c);
-    } catch (error) { setNotice(error instanceof Error ? error.message : 'เกิดข้อผิดพลาดในการโหลดข้อมูล'); }
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 401) {
+        clearToken(); setReady(false); setDashboard(null); setReport(null); setBudgets([]); setTransactions([]); setAccounts([]); setCategories([]); setNotice('เซสชันหมดอายุ กรุณาเข้าสู่ระบบใหม่'); return;
+      }
+      setNotice(error instanceof Error ? error.message : 'เกิดข้อผิดพลาดในการโหลดข้อมูล');
+    }
     finally { setLoading(false); }
   };
   useEffect(() => { if (ready) void loadData(); }, [ready]);
