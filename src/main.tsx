@@ -386,7 +386,7 @@ export function App() {
       {notice && <div className="notice-box error">{notice}</div>}
 
       {/* Main Views */}
-      {tab === 'dashboard' && (
+      { (tab === 'dashboard' || tab === 'entry') && (
         <DashboardView
           dashboard={dashboard}
           report={report}
@@ -1275,17 +1275,20 @@ function EntryView({
 
   if (!activeAccounts.length) {
     return (
-      <div className="content-card">
-        <div className="notice-box error">ยังไม่มีบัญชีที่เปิดใช้งาน กรุณาเพิ่มบัญชีในเมนูตั้งค่าก่อน</div>
-        <button className="btn-secondary" onClick={onCancel} style={{ width: '100%', marginTop: '10px' }}>
-          กลับ
-        </button>
+      <div className="entry-glass-overlay">
+        <div className="entry-glass-sheet content-card">
+          <div className="notice-box error">ยังไม่มีบัญชีที่เปิดใช้งาน กรุณาเพิ่มบัญชีในเมนูตั้งค่าก่อน</div>
+          <button className="btn-secondary" onClick={onCancel} style={{ width: '100%', marginTop: '10px' }}>
+            กลับ
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="content-card">
+    <div className="entry-glass-overlay">
+      <div className="entry-glass-sheet content-card">
       <div className="content-card-header">
         <h2 className="card-title">{editing ? 'แก้ไขรายการ' : 'บันทึกรายการใหม่'}</h2>
         <button className="card-link-btn" onClick={onCancel}>
@@ -1427,6 +1430,7 @@ function EntryView({
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 }
