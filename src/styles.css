@@ -1428,6 +1428,7 @@ button:disabled {
   padding: 8px 12px 14px 12px;
   pointer-events: auto;
   position: relative;
+  overflow: visible;
 }
 
 .bottom-nav-tab {
@@ -1440,7 +1441,21 @@ button:disabled {
   font-weight: 600;
   padding: 4px 8px;
   min-width: 58px;
-  transition: color 0.15s ease;
+  position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.bottom-nav-tab::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  width: 34px;
+  height: 3px;
+  border-radius: 99px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.35);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .bottom-nav-tab svg {
@@ -1452,6 +1467,26 @@ button:disabled {
 .bottom-nav-tab.active {
   color: var(--primary-blue);
   font-weight: 800;
+  transform: translateY(-2px);
+}
+
+.bottom-nav-tab.active::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.bottom-nav-tab:hover {
+  color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+.bottom-nav-tab svg {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.bottom-nav-tab.active svg {
+  transform: scale(1.08);
+  filter: drop-shadow(0 3px 5px var(--primary-glow));
 }
 
 /* Keep the original navigation; optional feature tabs stay out of the main bar. */
@@ -1477,6 +1512,15 @@ button:disabled {
 .bottom-nav-fab:hover {
   background: var(--primary-blue-dark);
   transform: translateY(-18px) scale(1.03);
+}
+
+.bottom-nav-fab {
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bottom-nav-fab:active {
+  transform: translateY(-14px) scale(0.95);
+  box-shadow: 0 3px 10px var(--primary-glow);
 }
 
 /* Notice, Empty State, & Loading */

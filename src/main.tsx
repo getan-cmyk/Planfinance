@@ -184,6 +184,14 @@ const categoryIconDefault = (name?: string, fallback = '📦') =>
     'Other Income': '💵',
   }[name ?? ''] ?? fallback);
 
+const categoryEmojiPalette = ['📦', '🛒', '🍜', '☕', '🚗', '⛽', '🏠', '📱', '🎮', '💊', '✈️', '🎓', '🐾', '💡', '🎁'];
+const categoryEmojiFor = (name?: string, explicit?: string) => {
+  if (explicit && explicit !== '📦' && explicit !== '•') return explicit;
+  const value = name ?? '';
+  const hash = Array.from(value).reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  return categoryIconDefault(value, categoryEmojiPalette[hash % categoryEmojiPalette.length]);
+};
+
 const categoryColorDefault = (name?: string, fallback = '#64748B') =>
   ({
     Shopping: '#EF4444',
@@ -699,7 +707,7 @@ function DashboardView({
             {top3.map((item) => {
               const pct = totalExpense > 0 ? Math.round((item.amount_satang / totalExpense) * 100) : 0;
               const color = item.color ?? categoryColorDefault(item.name);
-              const icon = item.icon ?? categoryIconDefault(item.name);
+              const icon = categoryEmojiFor(item.name, item.icon);
               return (
                 <div className="top-cat-item" key={item.id}>
                   <div className="top-cat-icon">{icon}</div>
@@ -778,7 +786,7 @@ function DashboardView({
           <div className="transaction-items-list">
             {recentTx.map((tx) => {
               const isIncome = ['income', 'refund', 'interest', 'dividend', 'investment_sell'].includes(tx.type);
-              const icon = tx.category_icon ?? categoryIconDefault(tx.category_name, isIncome ? '💰' : '📦');
+              const icon = categoryEmojiFor(tx.category_name, tx.category_icon ?? (isIncome ? '💰' : '📦'));
               return (
                 <div className="tx-row-item" key={tx.id}>
                   <div className="tx-left-group">
@@ -900,7 +908,7 @@ function TransactionsView({
                 <option value="all">ทุกหมวดหมู่</option>
                 {categories.map((c) => (
                   <option value={c.id} key={c.id}>
-                    {c.icon ?? '•'} {categoryLabel(c.name)}
+                    {categoryEmojiFor(c.name, c.icon)} {categoryLabel(c.name)}
                   </option>
                 ))}
               </select>
@@ -920,7 +928,7 @@ function TransactionsView({
               <div className="transaction-items-list">
                 {filtered.map((tx) => {
                   const isIncome = ['income', 'refund', 'interest', 'dividend', 'investment_sell'].includes(tx.type);
-                  const icon = tx.category_icon ?? categoryIconDefault(tx.category_name, isIncome ? '💰' : '📦');
+                  const icon = categoryEmojiFor(tx.category_name, tx.category_icon ?? (isIncome ? '💰' : '📦'));
                   return (
                     <div className="tx-row-item" key={tx.id}>
                       <div className="tx-left-group">
@@ -1145,7 +1153,7 @@ function CalendarSpendingView({
           <div className="transaction-items-list">
             {selectedDayInfo.items.map((tx) => {
               const isIncome = ['income', 'refund', 'interest', 'dividend', 'investment_sell'].includes(tx.type);
-              const icon = tx.category_icon ?? categoryIconDefault(tx.category_name, isIncome ? '💰' : '📦');
+              const icon = categoryEmojiFor(tx.category_name, tx.category_icon ?? (isIncome ? '💰' : '📦'));
               return (
                 <div className="tx-row-item" key={tx.id}>
                   <div className="tx-left-group">
@@ -1333,7 +1341,7 @@ function EntryView({
             >
               {activeCategories.map((c) => (
                 <option value={c.id} key={c.id}>
-                  {c.icon ?? '•'} {categoryLabel(c.name)}
+                  {categoryEmojiFor(c.name, c.icon)} {categoryLabel(c.name)}
                 </option>
               ))}
             </select>
@@ -1854,7 +1862,7 @@ function SettingsView({
                 border: `1px solid ${c.kind === 'income' ? 'var(--income-green-border)' : 'var(--expense-red-border)'}`,
               }}
             >
-              {c.icon ?? '•'} {categoryLabel(c.name)}
+              {categoryEmojiFor(c.name, c.icon)} {categoryLabel(c.name)}
               <button
                 onClick={() => void removeCategory(c)}
                 style={{ fontSize: '14px', marginLeft: '4px', opacity: 0.7 }}
