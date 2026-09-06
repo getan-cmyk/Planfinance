@@ -2030,7 +2030,7 @@ function BottomNav({
           <span className="unrequested-nav-label">น้ำมัน</span>
         </button>
 
-        <button className={`bottom-nav-tab ${tab === 'reports' || tab === 'settings' ? 'active' : ''}`} onClick={() => onChange('reports')}>
+        <button className={`bottom-nav-tab ${tab === 'reports' ? 'active' : ''}`} onClick={() => onChange('reports')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
             <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
@@ -2040,8 +2040,8 @@ function BottomNav({
 
         <button className={`bottom-nav-tab ${tab === 'settings' ? 'active' : ''}`} onClick={() => onChange('settings')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.5 1.5-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V20h-2.12v-.41a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06-1.5-1.5.06-.06A1.7 1.7 0 0 0 9.6 15a1.7 1.7 0 0 0-1.55-1H7.6v-2.12h.45a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.5-1.5.06.06a1.7 1.7 0 0 0 1.88.34 1.7 1.7 0 0 0 1-1.55V5h2.12v.41a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.5 1.5-.06.06A1.7 1.7 0 0 0 19.4 10c.23.6.8 1 1.45 1h.55v2.12h-.45a1.7 1.7 0 0 0-1.55 1.88z"></path>
+            <path d="M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Z"></path>
+            <path d="m19.4 15 .1.2 1.5 1.1-1.8 2.3-1.7-1.1a7.7 7.7 0 0 1-1.6.9l-.2 2h-2.8l-.2-2a7.7 7.7 0 0 1-1.6-.9l-1.7 1.1-1.8-2.3 1.5-1.1.1-.2a7.7 7.7 0 0 1-.2-1.6l-1.7-1v-2.8l1.7-1a7.7 7.7 0 0 1 .2-1.6l-.1-.2-1.5-1.1 1.8-2.3 1.7 1.1a7.7 7.7 0 0 1 1.6-.9l.2-2h2.8l.2 2a7.7 7.7 0 0 1 1.6.9l1.7-1.1 1.8 2.3-1.5 1.1-.1.2a7.7 7.7 0 0 1 .2 1.6l1.7 1v2.8l-1.7 1a7.7 7.7 0 0 1-.2 1.6Z"></path>
           </svg>
           <span>ตั้งค่า</span>
         </button>
