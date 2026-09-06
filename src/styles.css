@@ -53,7 +53,7 @@
   --nav-border: #E2E8F0;
   --nav-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 
-  --hero-bg: linear-gradient(135deg, #182C4A 0%, #112037 100%);
+  --hero-bg: radial-gradient(120% 100% at 50% 118%, rgba(151, 0, 255, 0.52) 0%, rgba(67, 19, 112, 0.22) 36%, transparent 70%), linear-gradient(145deg, #182C4A 0%, #101C35 62%, #190D35 100%);
   --hero-text: #FFFFFF;
   --hero-text-muted: #94A3B8;
 
@@ -109,7 +109,7 @@ body[data-theme="dark"] {
   --nav-border: #1E2E42;
   --nav-shadow: 0 -4px 25px rgba(0, 0, 0, 0.4);
 
-  --hero-bg: linear-gradient(135deg, #16263F 0%, #0E1A2C 100%);
+  --hero-bg: radial-gradient(120% 100% at 50% 118%, rgba(151, 0, 255, 0.62) 0%, rgba(67, 19, 112, 0.3) 36%, transparent 70%), linear-gradient(145deg, #101A30 0%, #080F20 62%, #160626 100%);
   --hero-text: #FFFFFF;
   --hero-text-muted: #8E9EA8;
 }
@@ -352,7 +352,7 @@ button:disabled {
 }
 
 .hero-main-amount.positive { color: #8FE0B0; }
-.hero-main-amount.negative { color: #FF9A8F; }
+.hero-main-amount.negative { color: #FF8B82; }
 
 .hero-sub-text {
   margin-top: 4px;
@@ -413,7 +413,7 @@ button:disabled {
 }
 
 .hero-bar.negative {
-  background: linear-gradient(180deg, #FF9A8F 0%, #E45E55 100%);
+  background: linear-gradient(180deg, #FF978F 0%, #E96A62 100%);
 }
 
 /* 4-Column Stat Cards */
