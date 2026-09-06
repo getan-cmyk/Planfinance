@@ -204,6 +204,9 @@ const categoryColorDefault = (name?: string, fallback = '#64748B') =>
     'Other Income': '#10B981',
   }[name ?? ''] ?? fallback);
 
+const categoryBreakdownPalette = ['#EF4444', '#F97316', '#EAB308', '#10B981', '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899'];
+const categoryBreakdownColor = (index: number) => categoryBreakdownPalette[index % categoryBreakdownPalette.length];
+
 const accountTypeLabel = (type: string) =>
   ({
     bank: 'บัญชีธนาคาร',
@@ -741,9 +744,9 @@ function DashboardView({
             </div>
 
             <div className="donut-legend-list">
-              {sortedCategories.slice(0, 6).map((item) => {
+              {sortedCategories.slice(0, 6).map((item, index) => {
                 const pct = totalExpense > 0 ? Math.round((item.amount_satang / totalExpense) * 100) : 0;
-                const color = item.color ?? categoryColorDefault(item.name);
+                const color = categoryBreakdownColor(index);
                 return (
                   <div className="donut-legend-item" key={item.id}>
                     <div className="legend-left">
@@ -1522,12 +1525,12 @@ function ReportsView({
                       </div>
                     </div>
                     <div className="donut-legend-list">
-                      {activeCategories.map((item) => {
+                      {activeCategories.map((item, index) => {
                         const pct = totalExpense ? Math.round((item.amount_satang / totalExpense) * 100) : 0;
                         return (
                           <div className="donut-legend-item" key={item.id}>
                             <div className="legend-left">
-                              <span className="legend-dot" style={{ background: item.color ?? categoryColorDefault(item.name) }} />
+                              <span className="legend-dot" style={{ background: categoryBreakdownColor(index) }} />
                               <span className="legend-name">{categoryLabel(item.name)}</span>
                               <span className="legend-percent">{pct}%</span>
                             </div>
@@ -1585,12 +1588,12 @@ function ReportsView({
                       </div>
                     </div>
                     <div className="donut-legend-list">
-                      {activeCategories.map((item) => {
+                      {activeCategories.map((item, index) => {
                         const pct = totalExpense ? Math.round((item.amount_satang / totalExpense) * 100) : 0;
                         return (
                           <div className="donut-legend-item" key={item.id}>
                             <div className="legend-left">
-                              <span className="legend-dot" style={{ background: item.color ?? categoryColorDefault(item.name) }} />
+                              <span className="legend-dot" style={{ background: categoryBreakdownColor(index) }} />
                               <span className="legend-name">{categoryLabel(item.name)}</span>
                               <span className="legend-percent">{pct}%</span>
                             </div>
@@ -2058,12 +2061,12 @@ function DonutSvg({ categories, total }: { categories: CategoryReport[]; total: 
 
   return (
     <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%', transform: 'rotate(-90deg)' }}>
-      {categories.map((c) => {
+      {categories.map((c, index) => {
         const pct = c.amount_satang / total;
         const strokeDasharray = `${pct * circumference} ${circumference}`;
         const strokeDashoffset = -accumulatedPercent * circumference;
         accumulatedPercent += pct;
-        const color = c.color ?? categoryColorDefault(c.name);
+        const color = categoryBreakdownColor(index);
 
         return (
           <circle
