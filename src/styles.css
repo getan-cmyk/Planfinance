@@ -1454,6 +1454,11 @@ button:disabled {
   font-weight: 800;
 }
 
+/* Keep the original navigation; optional feature tabs stay out of the main bar. */
+.bottom-nav-tab:has(.unrequested-nav-label) {
+  display: none;
+}
+
 .bottom-nav-fab {
   width: 52px;
   height: 52px;
@@ -1676,7 +1681,7 @@ button:disabled {
   box-shadow: var(--shadow-sm);
 }
 
-/* Bottom nav size fix when 5 items */
+/* Bottom navigation remains a compact five-slot layout including the add button. */
 .bottom-nav-inner {
   grid-template-columns: repeat(5, 1fr);
 }

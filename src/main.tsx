@@ -2007,7 +2007,7 @@ function BottomNav({
             <polyline points="7 23 3 19 7 15"></polyline>
             <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
           </svg>
-          <span>ประจำ</span>
+          <span className="unrequested-nav-label">ประจำ</span>
         </button>
 
         <button className={`bottom-nav-tab ${tab === 'fuel' ? 'active' : ''}`} onClick={() => onChange('fuel')}>
@@ -2016,7 +2016,7 @@ function BottomNav({
             <path d="M3 22H21"></path>
             <path d="M9 22V12h6v10"></path>
           </svg>
-          <span>น้ำมัน</span>
+          <span className="unrequested-nav-label">น้ำมัน</span>
         </button>
 
         <button className={`bottom-nav-tab ${tab === 'reports' || tab === 'settings' ? 'active' : ''}`} onClick={() => onChange('reports')}>
@@ -2025,6 +2025,14 @@ function BottomNav({
             <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
           </svg>
           <span>รายงาน</span>
+        </button>
+
+        <button className={`bottom-nav-tab ${tab === 'settings' ? 'active' : ''}`} onClick={() => onChange('settings')}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.5 1.5-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V20h-2.12v-.41a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06-1.5-1.5.06-.06A1.7 1.7 0 0 0 9.6 15a1.7 1.7 0 0 0-1.55-1H7.6v-2.12h.45a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.5-1.5.06.06a1.7 1.7 0 0 0 1.88.34 1.7 1.7 0 0 0 1-1.55V5h2.12v.41a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.5 1.5-.06.06A1.7 1.7 0 0 0 19.4 10c.23.6.8 1 1.45 1h.55v2.12h-.45a1.7 1.7 0 0 0-1.55 1.88z"></path>
+          </svg>
+          <span>ตั้งค่า</span>
         </button>
       </nav>
     </div>
