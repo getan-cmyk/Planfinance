@@ -351,6 +351,9 @@ button:disabled {
   color: #FFFFFF;
 }
 
+.hero-main-amount.positive { color: #8FE0B0; }
+.hero-main-amount.negative { color: #FF9A8F; }
+
 .hero-sub-text {
   margin-top: 4px;
   font-size: 12px;
@@ -367,10 +370,50 @@ button:disabled {
   position: relative;
 }
 
-.hero-sparkline-wrap svg {
-  width: 100%;
+.hero-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(5px, 2vw, 12px);
+  padding: 8px 8px 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hero-bar-baseline {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.hero-bar-column {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
   height: 100%;
+}
+
+.hero-bar {
   display: block;
+  width: min(18px, 100%);
+  min-height: 8px;
+  border-radius: 7px 7px 2px 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.hero-bar.positive {
+  background: linear-gradient(180deg, #8FE0B0 0%, #39B978 100%);
+}
+
+.hero-bar.negative {
+  background: linear-gradient(180deg, #FF9A8F 0%, #E45E55 100%);
 }
 
 /* 4-Column Stat Cards */

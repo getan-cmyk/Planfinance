@@ -507,6 +507,14 @@ function DashboardView({
   const totalIncome = report?.summary.incomeSatang ?? dashboard.incomeSatang;
   const totalExpense = report?.summary.expenseSatang ?? dashboard.expenseSatang;
   const netSavings = totalIncome - totalExpense;
+  const heroBalanceSatang = dashboard.monthlyAvailableSatang ?? dashboard.availableSatang;
+  const heroBalanceTone = heroBalanceSatang < 0 ? 'negative' : 'positive';
+  const heroChartData = (report?.trend ?? []).slice(-6).map((item) => ({
+    month: item.month,
+    netSatang: (item.income_satang ?? 0) - (item.expense_satang ?? 0),
+  }));
+  if (heroChartData.length === 0) heroChartData.push({ month: selectedMonth, netSatang: heroBalanceSatang });
+  const heroChartMax = Math.max(1, ...heroChartData.map((item) => Math.abs(item.netSatang)));
   const remainingPercent = totalIncome > 0 ? Math.max(0, Math.round((netSavings / totalIncome) * 100)) : 0;
   const txCount = report?.summary.transactionCount ?? transactions.length;
 
@@ -547,34 +555,21 @@ function DashboardView({
           </button>
         </div>
 
-        <div className="hero-main-amount">{money(dashboard.monthlyAvailableSatang ?? dashboard.availableSatang, hideBalance)}</div>
+        <div className={`hero-main-amount ${heroBalanceTone}`}>{money(heroBalanceSatang, hideBalance)}</div>
         <div className="hero-sub-text">จากยอดเงินจริง {money(dashboard.liquidSatang, hideBalance)}</div>
 
-        {/* Hero Sparkline Curve */}
-        <div className="hero-sparkline-wrap">
-          <svg viewBox="0 0 348 60" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="heroCurveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M 0,48 Q 50,45 85,28 T 170,42 T 255,20 T 344,30 L 344,60 L 0,60 Z"
-              fill="url(#heroCurveGrad)"
-            />
-            <path
-              d="M 0,48 Q 50,45 85,28 T 170,42 T 255,20 T 344,30"
-              fill="none"
-              stroke="#FFFFFF"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            />
-            <circle cx="85" cy="28" r="3" fill="#FFFFFF" />
-            <circle cx="170" cy="42" r="3" fill="#FFFFFF" />
-            <circle cx="255" cy="20" r="3" fill="#FFFFFF" />
-            <circle cx="344" cy="30" r="3.5" fill="#FFFFFF" />
-          </svg>
+        {/* Hero compact bar chart */}
+        <div className="hero-sparkline-wrap hero-bar-chart" aria-label="กราฟยอดคงเหลือรายเดือน">
+          <div className="hero-bar-baseline" />
+          {heroChartData.map((item) => {
+            const isNegative = item.netSatang < 0;
+            const height = Math.max(10, Math.round((Math.abs(item.netSatang) / heroChartMax) * 100));
+            return (
+              <div className="hero-bar-column" key={item.month} title={`${formatThaiMonthYear(item.month)} ${money(item.netSatang)}`}>
+                <span className={`hero-bar ${isNegative ? 'negative' : 'positive'}`} style={{ height: `${height}%` }} />
+              </div>
+            );
+          })}
         </div>
       </div>
 
